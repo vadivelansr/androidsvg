@@ -1,1 +1,1 @@
-include ':androidsvg'
+include ':androidsvg', ':testapp'
