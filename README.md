@@ -1,6 +1,8 @@
 Our fork of https://code.google.com/p/androidsvg/.
 
+
 #AndroidSVG
+[![Circle CI](https://circleci.com/gh/Snapchat/androidsvg.svg?style=svg)](https://circleci.com/gh/Snapchat/androidsvg)  
 AndroidSVG is a SVG parser and renderer for Android. It has almost complete support for the static visual elements of the SVG 1.1 and SVG 1.2 Tiny specifications (except for filters). AndroidSVG correctly renders the SVG Acid Test.
 
 AndroidSVG is licensed under the Apache License v2.0.
