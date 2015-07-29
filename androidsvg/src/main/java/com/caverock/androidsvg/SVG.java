@@ -16,6 +16,15 @@
 
 package com.caverock.androidsvg;
 
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Picture;
+import android.graphics.RectF;
+import android.util.Log;
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,18 +36,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.xml.sax.SAXException;
-
-import android.content.Context;
-import android.content.res.AssetManager;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Picture;
-import android.graphics.RectF;
-import android.util.Log;
-
 import com.caverock.androidsvg.CSSParser.Ruleset;
+import org.xml.sax.SAXException;
 
 /**
  * AndroidSVG is a library for reading, parsing and rendering SVG documents on Android devices.
@@ -1565,7 +1564,7 @@ public class SVG
 
 
    // One of the element types that can cause graphics to be drawn onto the target canvas.
-   // Specifically: ‘circle’, ‘ellipse’, ‘image’, ‘line’, ‘path’, ‘polygon’, ‘polyline’, ‘rect’, ‘text’ and ‘use’.
+   // Specifically: <circle>, <ellipse>, <image>, <line>, <path>, <polygon>, <polyline>, <rect>, <text> and <use>.
    protected static abstract class GraphicsElement extends SvgConditionalElement implements HasTransform
    {
       public Matrix  transform;
