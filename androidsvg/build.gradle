@@ -12,3 +12,4 @@ android {
 }
 
 apply from: 'maven_config.gradle'
+apply from: 'artifactory_config.gradle'

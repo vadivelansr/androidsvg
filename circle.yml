@@ -1,0 +1,12 @@
+# This file defines the continuous integration build process to be run at circleci.com.
+
+test:
+  override:
+    - ./gradlew -s check assembleRelease
+
+# If our build passes on master, deploy a release to Artifactory.
+deployment:
+  artifactoryPublish:
+    branch: master
+    commands:
+      - ./gradlew artifactoryPublish

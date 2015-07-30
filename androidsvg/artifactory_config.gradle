@@ -1,0 +1,34 @@
+/**
+ * Configures an artifactoryPublish task for uploading a release to Artifactory.
+ * This expects the environment variables ARTIFACTORY_URL, ARTIFACTORY_USERNAME, and ARTIFACTORY_PASSWORD.
+ *
+ * Heavily inspired by https://github.com/JFrogDev/project-examples/blob/master/gradle-examples/gradle-android-aar/build.gradle.
+ */
+
+apply plugin: 'com.jfrog.artifactory-upload'
+
+artifactory {
+    contextUrl = System.getenv('ARTIFACTORY_URL')
+    publish {
+        repository {
+            repoKey = 'libs-local'
+            username = System.getenv('ARTIFACTORY_USERNAME')
+            password = System.getenv('ARTIFACTORY_PASSWORD')
+            maven = true
+        }
+        defaults {
+            publishConfigs('archives', 'published')
+            properties = ['build.status': "$it.project.status".toString()]
+            publishPom = true //Publish generated POM files to Artifactory (true by default)
+            publishIvy = false //Publish generated Ivy descriptor files to Artifactory (true by default)
+        }
+    }
+}
+
+if (System.getenv('CIRCLECI')) {
+    project.version = project.version + '.' + System.getenv('CIRCLE_BUILD_NUM')
+}
+
+artifactoryPublish {
+    dependsOn sourcesJar
+}

@@ -1,6 +1,6 @@
 apply plugin: 'com.github.dcendents.android-maven'
 
-version = '1.2.3'
+version = '1.3'
 group = 'com.snapchat'
 
 def siteUrl = 'https://github.com/Snapchat/androidsvg'
@@ -42,6 +42,10 @@ task sourcesJar(type: Jar) {
     classifier = 'sources'
 }
 
+configurations {
+    published
+}
+
 artifacts {
-    archives sourcesJar
+    published sourcesJar
 }
