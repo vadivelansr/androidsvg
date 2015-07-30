@@ -1,0 +1,47 @@
+apply plugin: 'com.github.dcendents.android-maven'
+
+version = '1.2.3'
+group = 'com.snapchat'
+
+def siteUrl = 'https://github.com/Snapchat/androidsvg'
+def gitUrl = 'https://github.com/Snapchat/androidsvg.git'
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+
+                name 'SVG rendering library for Android.'
+                url siteUrl
+
+                licenses {
+                    license {
+                        name 'Apache 2.0'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'ndahlquist'
+                        name 'Nic Dahlquist'
+                        email 'nic@snapchat.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+artifacts {
+    archives sourcesJar
+}
